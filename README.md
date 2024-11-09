@@ -10,7 +10,7 @@ The system consists of two main components:
 
 ### Environment Setup
 
-Create a `.env` file with the following configurations:
+A `.env` file with the following configurations:
 
 ```env
 # IBM Watson Configurations
