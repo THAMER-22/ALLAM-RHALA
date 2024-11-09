@@ -131,9 +131,3 @@ python src/AlUla_activities.py
 - Platform: Pinecone
 - Used for semantic search and content retrieval
 - Optimized for tourism-related queries
-
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
