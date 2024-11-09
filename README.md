@@ -131,3 +131,14 @@ python src/AlUla_activities.py
 - Platform: Pinecone
 - Used for semantic search and content retrieval
 - Optimized for tourism-related queries
+
+### Acknowledgments
+- Partners & Contributors
+- IBM Watson Team
+- Eleven Labs
+- Pinecone
+- AlUla Tourism Authority
+### Third-Party Resources
+- OpenAI Whisper
+- Hugging Face Transformers
+- NLTK Community
