@@ -1,60 +1,130 @@
-# ALLAM && Rahala
+#  Rahaala Tourism Assistant
 
-The Nexta Allam is an advanced conversational system designed to provide seamless audio-based interaction. It takes an audio message as input, processes it through multiple steps, and returns a spoken response. Here's a step-by-step breakdown of how the Allam Pipeline works:
+An advanced AI-powered tourism assistant system combining voice interaction capabilities with specialized tourism planning for AlUla, Saudi Arabia.
 
-##### Audio-to-Text Conversion: 
-The pipeline begins by converting the user's audio input into text. This is achieved using state-of-the-art automatic speech recognition (ASR) technology, which transcribes spoken language with high accuracy.
-##### Language Processing with an LLM: 
-Once transcribed, the text is passed to a large language model (LLM) that interprets the message and generates a relevant response. The LLM leverages extensive training data to understand context, answer questions, and engage in natural dialogue.
-##### Embedding-based Processing: 
-At certain stages, the pipeline also utilizes embeddings, which are vector representations of language data. Embeddings help the system grasp deeper meanings, detect similar phrases, or connect related concepts, enhancing the relevance and accuracy of responses.
-##### Text-to-Audio Conversion: 
-Finally, the generated text response is converted back into an audio format using text-to-speech (TTS) technology, allowing the system to respond verbally.
+## System Architecture
 
-The Allam Pipeline thus offers an end-to-end solution for voice interactions, combining ASR, embeddings, LLM-based natural language processing, and TTS to create an intuitive, voice-driven experience.
+The system consists of two main components:
+1. **ALLAM** - Voice-based interaction pipeline
+2. **Rahaala** - Text-based tourism planning system
 
-### Requirements
+### Environment Setup
 
+Create a `.env` file with the following configurations:
+
+```env
+# IBM Watson Configurations
+IBM_MODEL_URL = "https://eu-de.ml.cloud.ibm.com"
+IBM_MODEL_API = "qhPFZJCIUnmrxWW6ogONdFZrtC95EJ6pXjtLir8hU-0j"
+IBM_MODEL_ID = "sdaia/allam-1-13b-instruct"
+IBM_MODEL_PID = "285fb1c8-30c8-4b43-bc2c-7d208a9ec43b"
+
+# Eleven Labs TTS Configurations
+ELVEN_API = "sk_f3c5e58866644b6ef0a07817c4fa86e67189b79a244bb4a4"
+ELVEN_VID = "JBFqnCBsd6RMkjVDRZzb"
+
+# Pinecone Vector Database
+PINECONE_API_KEY = "9faf8e48-01a9-422c-93ec-c7329b6708a9"
 ```
-pip install -r requirement.txt
+
+### Installation
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
 ```
 
-### Allam Input/output Details.
-* Input: Input will come from front end in the form of audio message. Sample input audio [message](https://github.com/Nexta-sa/ALLAM/blob/main/sample/WhatsApp%20Audio%202024-11-04%20at%202.24.58%20AM.mp4).
-* Output: The Nexta ALLAM code will take input audio message and save output audio file. Sample output audio [file](https://github.com/Nexta-sa/ALLAM/blob/main/sample/llm_output_speech.mp3). This audio message will be send back to front end.
+Requirements include:
+- pinecone-client: Vector database client
+- tika: Document parsing
+- ibm-watsonx-ai: IBM Watson AI services
+- whisper: OpenAI's speech recognition
+- ffmpeg: Audio processing
+- transformers: Hugging Face transformers
+- Additional utilities: nltk, python-dotenv, requests, beautifulsoup4, langchain
+- pydantic==1.10.2: Data validation
+- openpyxl: Excel file handling
 
-### Allam Input/Output Path Settings.
-* Input: You can set input file [here](https://github.com/Nexta-sa/ALLAM/blob/main/src/allam.py#L35)
-* Output: You can set output file [here](https://github.com/Nexta-sa/ALLAM/blob/main/src/allam.py#L35)
+## ALLAM Pipeline
 
-### Allam Code Details.
-* src/allam.py: Main file where we can set input audio and output audio paths. It also contain main function of entire process.
-* src/utils.py: File contains all the helpfull functions for our Nexta ALLAM pipeline.
-* src/prompt_document.py: In this file we can change system prompt easily and also we can add more documnets if we want.
+### Overview
+ALLAM is a voice-based interaction system that:
+1. Converts audio input to text (Speech-to-Text)
+2. Processes the text using IBM Watson's ALLAM-1-13B model
+3. Generates responses using language embeddings
+4. Converts responses back to audio (Text-to-Speech)
 
-### Command to run the Allam pipeline
-```
+### Usage
+```bash
 python src/allam.py
 ```
 
-### Rahaala Input/output Details.
-* Input: Input will come from front end in the form of text.
-* Output: The Nexta rahaala code will reply in text.
+### File Structure
+- `src/allam.py`: Main pipeline implementation
+- `src/utils.py`: Utility functions
+- `src/prompt_document.py`: System prompts and document management
 
-### Rahaala Input/Output Path Settings.
-* Input: You can set input text [here](https://github.com/Nexta-sa/ALLAM/blob/rahaala/src/rahaala.py#L30)
-* Output: You can take output text [here](https://github.com/Nexta-sa/ALLAM/blob/rahaala/src/rahaala.py#L32)
+### Input/Output
+- Input: Audio messages (e.g., WhatsApp voice notes)
+- Output: Generated audio responses
+- Paths configurable in `src/allam.py`
 
-### Rahaala Code Details.
-* src/rahaala.py: Main file where we can send questions and get answer. It also contain main function of entire process.
-* src/helper_rahaala.py: File contains all the helpfull functions for our Nexta Rahaala pipeline.
-* src/rahaala_prompt.py: In this file we can change system prompt easily and also we can add more documnets if we want.
+## Rahaala Pipeline
 
-### Command to run the Rahaala pipeline
-```
+### Overview
+Rahaala is a text-based tourism planning system specialized for AlUla attractions and activities.
+
+### Usage
+```bash
 python src/rahaala.py
 ```
-### Command to run the recomendation pipeline 
-```
+
+### File Structure
+- `src/rahaala.py`: Main tourism assistant implementation
+- `src/helper_rahaala.py`: Utility functions
+- `src/rahaala_prompt.py`: Tourism-specific prompts
+
+### Activities Database
+- Stored in `alula_activities.xlsx`
+- Contains categorized information about:
+  - Heritage sites
+  - Adventures
+  - Restaurants
+  - Hotels
+  - Wellness activities
+  - Prices and durations
+
+### Recommendation System
+```bash
 python src/AlUla_activities.py
 ```
+
+## Data Privacy & Security
+- `.gitignore` configured to exclude:
+  - Jupyter notebook checkpoints
+  - Python cache files
+  - Environment variables
+
+## Model Details
+
+### IBM Watson Configuration
+- Model: SDAIA/ALLAM-1-13B
+- Deployment: IBM WatsonX AI
+- Specialized for Arabic language processing
+- Fine-tuned for tourism domain
+
+### Text-to-Speech
+- Provider: Eleven Labs
+- Configured for natural Arabic speech synthesis
+- Custom voice ID for consistent output
+
+### Vector Database
+- Platform: Pinecone
+- Used for semantic search and content retrieval
+- Optimized for tourism-related queries
+
+## Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
