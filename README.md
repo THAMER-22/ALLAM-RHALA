@@ -1,4 +1,4 @@
-#  Rahala Tourism Assistant
+#  Rahaala Tourism Assistant
 
 An advanced AI-powered tourism assistant system combining voice interaction capabilities with specialized tourism planning for AlUla, Saudi Arabia.
 
