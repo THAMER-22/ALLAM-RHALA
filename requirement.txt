@@ -1,0 +1,13 @@
+pinecone-client
+tika
+ibm-watsonx-ai
+git+https://github.com/openai/whisper.git
+ffmpeg
+transformers
+nltk
+python-dotenv
+requests 
+beautifulsoup4
+langchain
+pydantic==1.10.2
+openpyxl
