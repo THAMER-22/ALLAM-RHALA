@@ -132,8 +132,7 @@ python src/AlUla_activities.py
 - Used for semantic search and content retrieval
 - Optimized for tourism-related queries
 
-### Acknowledgments
-- Partners & Contributors
+ ### Partners & Contributors
 - IBM Watson Team
 - Eleven Labs
 - Pinecone
