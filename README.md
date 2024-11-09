@@ -99,7 +99,7 @@ python src/rahaala.py
 python src/AlUla_activities.py
 ```
 ### Web Scraping & Processing
-- **beautifulsoup4**: HTML parsing and web scraping
+- beautifulsoup4: HTML parsing and web scraping
   - Extracts structured data from websites
   - Used for gathering additional tourism information
   - Processes HTML/XML documents
