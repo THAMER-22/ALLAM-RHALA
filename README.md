@@ -98,7 +98,16 @@ python src/rahaala.py
 ```bash
 python src/AlUla_activities.py
 ```
-
+### Web Scraping & Processing
+- **beautifulsoup4**: HTML parsing and web scraping
+  - Extracts structured data from websites
+  - Used for gathering additional tourism information
+  - Processes HTML/XML documents
+  ```python
+  from bs4 import BeautifulSoup
+  # Example usage in the system
+  soup = BeautifulSoup(html_content, 'html.parser')
+  
 ## Data Privacy & Security
 - `.gitignore` configured to exclude:
   - Jupyter notebook checkpoints
