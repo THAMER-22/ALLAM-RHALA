@@ -1,4 +1,4 @@
-# ALLAM && Rahaala
+# ALLAM && Rahala
 
 The Nexta Allam is an advanced conversational system designed to provide seamless audio-based interaction. It takes an audio message as input, processes it through multiple steps, and returns a spoken response. Here's a step-by-step breakdown of how the Allam Pipeline works:
 
